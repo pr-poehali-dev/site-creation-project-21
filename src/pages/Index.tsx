@@ -52,10 +52,16 @@ const Index = () => {
                 <a href="#author" className="text-muted-foreground hover:text-primary transition-colors">О авторе</a>
               </div>
             </div>
-            <Button variant="outline" size="sm">
-              <Icon name="Search" size={16} className="mr-2" />
-              Поиск
-            </Button>
+            <div className="flex items-center space-x-3">
+              <Button variant="outline" size="sm">
+                <Icon name="Search" size={16} className="mr-2" />
+                Поиск
+              </Button>
+              <Button size="sm">
+                <Icon name="User" size={16} className="mr-2" />
+                Войти
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
