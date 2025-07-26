@@ -1,30 +1,9 @@
-import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Separator } from '@/components/ui/separator';
-import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
-  const [comments, setComments] = useState<{ id: number; author: string; text: string; date: string }[]>([
-    { id: 1, author: "Анна Смирнова", text: "Отличная статья! Очень полезная информация.", date: "2 дня назад" },
-    { id: 2, author: "Михаил Петров", text: "Согласен с автором по всем пунктам.", date: "1 день назад" }
-  ]);
-  const [newComment, setNewComment] = useState('');
-
-  const handleAddComment = () => {
-    if (newComment.trim()) {
-      setComments([...comments, {
-        id: comments.length + 1,
-        author: "Гость",
-        text: newComment,
-        date: "только что"
-      }]);
-      setNewComment('');
-    }
-  };
 
   const articles = [
     {
@@ -165,55 +144,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Система комментариев */}
-        <section className="mb-16">
-          <Card className="max-w-2xl mx-auto">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Icon name="MessageCircle" size={20} className="mr-2" />
-                Комментарии
-              </CardTitle>
-              <CardDescription>
-                Поделитесь своими мыслями и обратной связью
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Форма добавления комментария */}
-              <div className="space-y-3">
-                <Textarea
-                  placeholder="Напишите ваш комментарий..."
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                  className="min-h-[100px]"
-                />
-                <Button onClick={handleAddComment} disabled={!newComment.trim()}>
-                  <Icon name="Send" size={16} className="mr-2" />
-                  Отправить комментарий
-                </Button>
-              </div>
 
-              <Separator />
-
-              {/* Список комментариев */}
-              <div className="space-y-4">
-                {comments.map((comment) => (
-                  <div key={comment.id} className="flex space-x-3">
-                    <Avatar className="w-10 h-10">
-                      <AvatarFallback>{comment.author[0]}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <span className="font-medium text-sm">{comment.author}</span>
-                        <span className="text-xs text-muted-foreground">{comment.date}</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{comment.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </section>
 
         {/* О авторе */}
         <section id="author">
